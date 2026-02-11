@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Roychid Cyber Portfolio</title>
+<script src="https://cdn.jsdelivr.net/npm/tsparticles@2/tsparticles.bundle.min.js"></script>
+<style>
+/* --- CSS from style.css --- */
+/* FONTS */
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;700&family=Space+Grotesk:wght@400;700&display=swap');
+
+:root {
+    --bg-color: #12121a;
+    --neon-green: #00ff88;
+    --neon-blue: #00ffff;
+    --neon-pink: #ff6fff;
+    --terminal-bg: rgba(20,20,25,0.7);
+}
+
+body {
+    background: linear-gradient(135deg, #12121a, #1a1a25);
+    background-size: 200% 200%;
+    animation: bgPulse 30s ease infinite;
+    margin: 0;
+    font-family: 'Courier New', monospace;
+    color: #fff;
+}
+#tsparticles {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    z-index: -1;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+    font-family: 'Fira Code', monospace;
+    color: var(--neon-green);
+    text-shadow: 0 0 8px var(--neon-green);
+}
+
+.logo .cursor {
+    animation: blink 1s infinite;
+}
+
+@keyframes blink {
+    0%, 50%, 100% { opacity: 1; }
+    25%, 75% { opacity: 0; }
+}
+
+.hero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 0px;
+    min-height: 100vh;
+    text-align: center;
+}
+
+@keyframes glowText {
+    from { text-shadow: 0 0 10px var(--neon-green), 0 0 20px var(--neon-blue); }
+    to { text-shadow: 0 0 20px var(--neon-pink), 0 0 30px var(--neon-blue); }
+}
+
+.subtitle span {
+    color: var(--neon-green);
+    font-weight: bold;
+}
+
+.hero-stats {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    gap: 40px;
+}
+
+.stat-box {
+    text-align: center;
+}
+
+.stat-box .number {
+    font-size: 2rem;
+    color: var(--neon-blue);
+    text-shadow: 0 0 8px var(--neon-blue);
+}
+
+.terminal-box {
+    margin-top: 50px;
+    width: 90%;
+    max-width: 700px;
+    background: var(--terminal-bg);
+    border-radius: 18px;
+    box-shadow: 0 0 20px rgba(0,255,136,0.3);
+    padding: 15px;
+    font-family: 'Fira Code', monospace;
+    color: #11ee2e;
+}
+
+.terminal-header {
+    display: flex;
+    gap: 6px;
+    margin-bottom: 10px;
+}
+
+.terminal-btn {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+}
+
+.btn-red { background: #ff605c; }
+.btn-yellow { background: #ffbd44; }
+.btn-green { background: #00ff88; }
+
+.terminal-content .prompt {
+    color: var(--neon-green);
+}
+
+.terminal-content .output {
+    margin-left: 20px;
+}
+
+.progress-percent {
+    width: 40px;
+    text-align: right;
+}
+.profile-dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.profile-pic {
+    cursor: pointer;
+    font-size: 1.0rem;
+    background: transparent;
+    color: #1ae43c;
+    padding: 6px 12px;
+    border-radius: 8px;
+    user-select: none;
+    transition: transform 0.2s ease;
+}
+.profile-pic:hover {
+    transform: scale(1.1);
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    right: 0;
+    top: 0%;
+    background: transparent;
+    border: 1px solid rgba(0, 255, 136, 0.3);
+    border-radius: 10px;
+    min-width: 140px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    z-index: 1000;
+    padding: 0.5rem 0;
+    backdrop-filter: blur(8px);
+}
+
+.dropdown-menu a {
+    display: block;
+    padding: 0.6rem 1rem;
+    color: #00ff88;
+    text-decoration: none;
+    font-family: 'Fira Code', monospace;
+    font-size: 0.9rem;
+    transition: background 0.2s ease;
+}
+.dropdown-menu a:hover {
+    background: rgba(0, 255, 136, 0.15);
+}
+
+.site-header {
+    position: fixed;
+    top: 10;
+    width: 100%;
+    padding: 1rem 0;
+    z-index: 100;
+    backdrop-filter: blur(6px);
+}
+
+.neon-nav {
+    display: flex;
+    justify-content: center;
+    gap: 2.5rem;
+}
+
+.neon-link {
+    color: var(--neon-green);
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.1rem;
+    text-shadow: 0 0 5px var(--neon-green);
+    transition: all 0.3s ease;
+}
+
+.neon-link:hover {
+    color: var(--neon-pink);
+    text-shadow:
+        0 0 10px var(--neon-pink),
+        0 0 20px var(--neon-pink);
+}
+@media screen and (max-width: 768px) {
+    .projects-shell,
+    .project-row {
+        display: block;
+        gap: 1.5rem;
+    }
+
+    .terminal-text {
+        font-size: 0.9rem;
+        line-height: 1.7;
+    }
+
+    .project-image {
+        width: 100%;
+        aspect-ratio: 16/9;
+        margin-top: 1rem;
+        padding: 0.5rem;
+    }
+
+    .project-image video,
+    .project-image img {
+        border-radius: 12px;
+        object-fit: cover;
+    }
+
+    .terminal-line.cmd {
+        font-size: 0.95rem;
+    }
+
+    .project-title {
+        font-size: 1.05rem;
+    }
+}
+
+/* Footer */
+.footer {
+    margin-top: 5rem;
+    padding: 2.5rem 1rem;
+    text-align: center;
+    background: rgba(15, 15, 20, 0.6);
+    backdrop-filter: blur(12px);
+    border-top: 1px solid rgba(0, 255, 255, 0.2);
+}
+.footer-icons {
+    display: flex;
+    justify-content: center;
+    gap: 1.8rem;
+    margin-bottom: 1rem;
+}
+.footer-icons a {
+    width: 42px;
+    height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: rgba(0, 255, 255, 0.08);
+    border: 1px solid rgba(0, 255, 255, 0.25);
+    transition: all 0.3s ease;
+}
+.footer-icons img {
+    width: 22px;
+    height: 22px;
+    filter: brightness(1.1);
+}
+.footer-icons a:hover {
+    background: rgba(0, 255, 255, 0.2);
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.6);
+    transform: translateY(-3px);
+}
+.footer-text {
+    font-size: 0.85rem;
+    color: rgba(200, 255, 255, 0.6);
+    margin-top: 0.5rem;
+}
+</style>
+</head>
+<body>
+
+<!-- Particle background -->
+<div id="tsparticles"></div>
+
+<!-- Header -->
+<header>
+    <div class="logo"><span class="cursor">&gt;</span>roychid.terminal</div>
+    <div class="profile-dropdown">
+        <div class="profile-pic" title="Profile Picture" onclick="toggleProfileMenu()">>_<</div>
+        <div class="dropdown-menu" id="profileMenu">
+            <a href="home.html" onclick="showSection('home')">Home</a>
+            <a href="projects.html" onclick="showSection('projects')">Projects</a>
+            <a href="skills.html" onclick="showSection('skills')">Skills</a>
+            <a href="contact.html" onclick="showSection('contact')">Contact</a>
+        </div>
+    </div>
+</header>
+
+<!-- Hero Section -->
+<section id="home" class="hero">
+    <div class="hero-content">
+        <p class="subtitle"><span>$</span> exploring the intersection of cybersecurity, web development & ethical hacking</p>
+
+        <div class="hero-stats">
+            <div class="stat-box">
+                <div class="number" data-target="">0</div>
+                <div class="label">Articles</div>
+            </div>
+            <div class="stat-box">
+                <div class="number" data-target="">0</div>
+                <div class="label">Readers</div>
+            </div>
+            <div class="stat-box">
+                <div class="number" data-target="">0</div>
+                <div class="label">CVEs Found</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Terminal Box -->
+    <div class="terminal-box">
+        <div class="terminal-header">
+            <div class="terminal-btn btn-red"></div>
+            <div class="terminal-btn btn-yellow"></div>
+            <div class="terminal-btn btn-green"></div>
+        </div>
+        <div class="terminal-content">
+            <div><span class="prompt">➜</span> <span class="command">whoami</span></div>
+            <div class="output">Chidhungwana_Roy@roychid:~$</div>
+            <br>
+            <br>
+            <div><span class="prompt">➜</span> <span class="command">./start_hacking.sh</span></div>
+            <div class="output">[✓] Let's dive into the code...</div>
+        </div>
+    </div>
+</section>
+
+<footer class="footer">
+    <div class="footer-icons">
+        <a href="https://instagram.com/roychid" target="_blank" aria-label="Instagram">
+            <img src="images/icons/instagram.png" alt="Instagram">
+        </a>
+        <a href="https://facebook.com/Roy Chidhungwana" target="_blank" aria-label="Facebook">
+            <img src="images/icons/facebook.png" alt="Facebook">
+        </a>
+        <a href="https://wa.me/+263775881639" target="_blank" aria-label="WhatsApp">
+            <img src="images/icons/whatsapp.png" alt="WhatsApp">
+        </a>
+        <a href="mailto:chidhungwanaroy4@gmail.com" aria-label="Gmail">
+            <img src="images/icons/gmail.png" alt="Gmail">
+        </a>
+        <a href="https://github.com/roychid" target="_blank" aria-label="GitHub">
+            <img src="images/icons/github.png" alt="GitHub">
+        </a>
+    </div>
+    <p class="footer-text">
+        <span class="cursor">&gt;</span> roychid@terminal ~ $
+    </p>
+</footer>
+
+<script>
+// --- JS from script.js ---
+// Particle.js quantum network effect
+tsParticles.load("tsparticles", {
+    fullScreen: { enable: true },
+    fpsLimit: 60,
+    particles: {
+        number: { value: 120, density: { enable: true, area: 800 } },
+        color: { value: ["#00ff88","#00ffff","#ff6fff"] },
+        shape: { type: "circle" },
+        opacity: { value: 0.8 },
+        size: { value: { min: 1.5, max: 3.5 } },
+        shadow: { enable: true, color: "#00ff88", blur: 5 },
+        links: {
+            enable: true,
+            distance: 150,
+            color: "#00ff88",
+            opacity: 0.4,
+            width: 1
+        },
+        move: {
+            enable: true,
+            speed: 0.8,
+            direction: "none",
+            random: true,
+            straight: false,
+            outModes: { default: "out" },
+        }
+    },
+    interactivity: {
+        events: {
+            onHover: { enable: true, mode: "grab" },
+            onClick: { enable: true, mode: "push" },
+        },
+        modes: {
+            grab: { distance: 140, links: { opacity: 0.6 } },
+            push: { quantity: 4 },
+        }
+    },
+    detectRetina: true,
+});
+
+// Animate stat numbers
+const counters = document.querySelectorAll('.number');
+counters.forEach(counter => {
+    const updateCount = () => {
+        const target = +counter.getAttribute('data-target');
+        const count = +counter.innerText;
+        const increment = target / 200;
+        if(count < target){
+            counter.innerText = Math.ceil(count + increment);
+            requestAnimationFrame(updateCount);
+        } else counter.innerText = target.toLocaleString();
+    };
+    updateCount();
+});
+
+// Animate skill bars
+const skillBars = document.querySelectorAll('.progress-bar');
+skillBars.forEach(bar => {
+    const target = bar.getAttribute('data-target');
+    setTimeout(()=> { 
+        bar.style.width = target; 
+        const pct = bar.parentElement.nextElementSibling;
+        let val = 0;
+        const interval = setInterval(()=>{ 
+            if(val >= parseInt(target)) clearInterval(interval); 
+            else { val++; pct.innerText = val+'%'; } 
+        }, 15);
+    }, 600);
+});
+
+function toggleProfileMenu() {
+    const menu = document.getElementById('profileMenu');
+    menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
+}
+
+// Close dropdown if clicking outside
+document.addEventListener('click', function(e) {
+    const menu = document.getElementById('profileMenu');
+    const pic = document.querySelector('.profile-pic');
+    if (!menu.contains(e.target) && !pic.contains(e.target)) {
+        menu.style.display = 'none';
+    }
+});
+</script>
+
+</body>
+</html>

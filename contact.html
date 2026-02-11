@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - Cyberpunk Neon</title>
+    <link rel="stylesheet" href="contact.css">
+    <script src="https://cdn.jsdelivr.net/npm/tsparticles@2/tsparticles.bundle.min.js"></script>
+</head>
+<body>
+    <!-- tsParticles background -->
+    <div id="tsparticles"></div>
+
+    <div class="container">
+        <div class="terminal contact-terminal">
+            <h1 class="neon-text">Get in Touch</h1>
+            <form id="contactForm">
+                <label for="name">Name</label>
+                <input type="text" id="name" placeholder="Your Name" required>
+
+                <label for="email">Email</label>
+                <input type="email" id="email" placeholder="Your Email" required>
+
+                <label for="message">Message</label>
+                <textarea id="message" placeholder="Your Message" rows="5" required></textarea>
+
+                <button type="submit" class="neon-btn">Send Message</button>
+            </form>
+            <p id="status" class="neon-text"></p>
+        </div>
+    </div>
+
+    <script src="contact.js"></script>
+</body>
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Roychid Cyber Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/tsparticles@2/tsparticles.bundle.min.js"></script>
+</head>
+<body>
+    <!-- Particle background -->
+    <div id="tsparticles"></div>
+
+    <!-- Header -->
+    <header>
+        <div class="logo"><span class="cursor">&gt;</span>roychid.terminal</div>
+        <div class="profile-dropdown">
+            <div class="profile-pic" title="Profile Picture" onclick="toggleProfileMenu()"><b>>_<</b></div>
+            <div class="dropdown-menu" id="profileMenu">
+                <a href="home.html" onclick="showSection('home')">Home</a>
+                <a href="projects.html" onclick="showSection('projects')">Projects</a>
+                <a href="skills.html" onclick="showSection('skills')">Skills</a>
+                <a href="contact.html" onclick="showSection('contact')">Contact</a>
+    </div>
+</div>
+
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <p class="subtitle"><span>$</span> exploring the intersection of cybersecurity, web development & ethical hacking</p>
+
+            <div class="hero-stats">
+                <div class="stat-box">
+                    <div class="number" data-target="">0</div>
+                    <div class="label">Articles</div>
+                </div>
+                <div class="stat-box">
+                    <div class="number" data-target="">0</div>
+                    <div class="label">Readers</div>
+                </div>
+                <div class="stat-box">
+                    <div class="number" data-target="">0</div>
+                    <div class="label">CVEs Found</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Terminal Box -->
+        <div class="terminal-box">
+            <div class="terminal-header">
+                <div class="terminal-btn btn-red"></div>
+                <div class="terminal-btn btn-yellow"></div>
+                <div class="terminal-btn btn-green"></div>
+            </div>
+            <div class="terminal-content">
+                <div><span class="prompt">➜</span> <span class="command">whoami</span></div>
+                <div class="output">Chidhungwana_Roy@roychid:~$</div>
+                <br>
+                
+                <br>
+                <div><span class="prompt">➜</span> <span class="command">./start_hacking.sh</span></div>
+                <div class="output">[✓] Let's dive into the code...</div>
+            </div>
+        </div>
+    </section>
+
+<footer class="footer">
+    <div class="footer-icons">
+        <a href="https://instagram.com/roychid" target="_blank" aria-label="Instagram">
+            <img src="images/icons/instagram.png" alt="Instagram">
+        </a>
+        <a href="https://facebook.com/Roy Chidhungwana" target="_blank" aria-label="Facebook">
+            <img src="images/icons/facebook.png" alt="Facebook">
+        </a>
+        <a href="https://wa.me/+263775881639" target="_blank" aria-label="WhatsApp">
+            <img src="images/icons/whatsapp.png" alt="WhatsApp">
+        </a>
+        <a href="mailto:chidhungwanaroy4@gmail.com" aria-label="Gmail">
+            <img src="images/icons/gmail.png" alt="Gmail">
+        </a>
+        <a href="https://github.com/roychid" target="_blank" aria-label="GitHub">
+            <img src="images/icons/github.png" alt="GitHub">
+        </a>
+    </div>
+
+    <p class="footer-text">
+        <span class="cursor">&gt;</span> roychid.terminal ~ $
+    </p>
+</footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
