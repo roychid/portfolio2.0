@@ -1,16 +1,41 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap');
+
+:root {
+    --neon-green: #00ff88;
+    --neon-blue:  #00ffff;
+    --neon-pink:  #ff6fff;
+}
+
+/* ─── Base ─── */
+body {
+    background: linear-gradient(135deg, #12121a, #1a1a25);
+    background-size: 200% 200%;
+    animation: bgPulse 30s ease infinite;
+    margin: 0;
+    font-family: 'JetBrains Mono', monospace;
+    color: #fff;
+}
+
+@keyframes bgPulse {
+    0%, 100% { background-position: 0% 50%; }
+    50%       { background-position: 100% 50%; }
+}
+
+/* ─── Page shell ─── */
 .terminal-page {
     padding: 6rem 5rem;
-    font-family: "JetBrains Mono", monospace;
+    font-family: 'JetBrains Mono', monospace;
     color: #c8ffe5;
 }
 
+/* ─── Command line ─── */
 .cmd {
     color: #00ff88;
     margin-bottom: 3rem;
-    text-shadow: 0 0 12px rgba(0,255,136,0.5);
+    text-shadow: 0 0 12px rgba(0, 255, 136, 0.5);
 }
 
-/* project layout */
+/* ─── Project row ─── */
 .project-row {
     display: grid;
     grid-template-columns: 1.4fr 1fr;
@@ -19,7 +44,7 @@
     margin-bottom: 4rem;
 }
 
-/* terminal text */
+/* ─── Terminal text ─── */
 .terminal-text {
     line-height: 1.9;
 }
@@ -28,7 +53,7 @@
     color: #00ffff;
     font-size: 1.15rem;
     margin-bottom: 0.5rem;
-    text-shadow: 0 0 18px rgba(0,255,255,0.6);
+    text-shadow: 0 0 18px rgba(0, 255, 255, 0.6);
 }
 
 .label {
@@ -36,40 +61,38 @@
     opacity: 0.85;
 }
 
-/* static glass image */
+/* ─── Project link ─── */
+.project-link {
+    color: #7dffcc;
+    margin-top: 0.25rem;
+}
+
+.project-link a {
+    color: #ff6fff;
+    text-decoration: none;
+    text-shadow: 0 0 10px rgba(255, 111, 255, 0.5);
+    transition: opacity 0.2s;
+}
+
+.project-link a:hover {
+    opacity: 0.75;
+    text-decoration: underline;
+}
+
+/* ─── Project image / slider ─── */
 .project-image {
+    position: relative;
+    aspect-ratio: 16 / 9;
+    width: 100%;
     background: rgba(20, 20, 30, 0.55);
     backdrop-filter: blur(12px);
     border-radius: 16px;
     padding: 0.75rem;
-
-    border: 1px solid rgba(0,255,255,0.25);
+    border: 1px solid rgba(0, 255, 255, 0.25);
     box-shadow:
-        0 0 25px rgba(0,255,255,0.25),
-        inset 0 0 15px rgba(255,255,255,0.03);
-}
-
-.project-image img {
-    width: 100%;
-    border-radius: 12px;
-    display: block;
-    filter: saturate(1.05) contrast(1.05);
-}
-
-.project-image {
-    position: relative;
-    aspect-ratio: 16 / 9; /* 👈 key fix */
-    width: 100%;
-
-    background: rgba(20,20,30,0.55);
-    backdrop-filter: blur(12px);
-    border-radius: 16px;
-    padding: 0.75rem;
-
-    border: 1px solid rgba(0,255,255,0.25);
-    box-shadow:
-        0 0 25px rgba(0,255,255,0.25),
-        inset 0 0 15px rgba(255,255,255,0.03);
+        0 0 25px rgba(0, 255, 255, 0.25),
+        inset 0 0 15px rgba(255, 255, 255, 0.03);
+    box-sizing: border-box;
 }
 
 .project-image::after {
@@ -77,14 +100,9 @@
     position: absolute;
     inset: 0;
     border-radius: 16px;
-    background: linear-gradient(
-        to bottom,
-        rgba(0,0,0,0.15),
-        rgba(0,0,0,0.35)
-    );
+    background: linear-gradient(to bottom, rgba(0,0,0,0.15), rgba(0,0,0,0.35));
     pointer-events: none;
 }
-
 
 .project-image img {
     position: absolute;
@@ -92,7 +110,7 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
-    border-radius: 0px;
+    border-radius: 12px;
     opacity: 0;
     transition: opacity 1.2s ease;
 }
@@ -101,82 +119,28 @@
     opacity: 1;
 }
 
-/* reuse existing tech-stack + neon-btn styles */
-
-/* FONTS */
-@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;700&family=Space+Grotesk:wght@400;700&display=swap');
-
-:root {
-    --bg-color: #12121a;           /* slightly lighter dark */
-    --neon-green: #00ff88;
-    --neon-blue: #00ffff;
-    --neon-pink: #ff6fff;
-    --terminal-bg: rgba(20,20,25,0.7); /* more transparent to show particles */
+/* ─── Cursor ─── */
+.cursor {
+    display: inline-block;
+    width: 8px;
+    height: 1em;
+    background: var(--neon-green);
+    animation: blink 1s step-end infinite;
+    vertical-align: middle;
 }
 
-/* Body background with subtle animated gradient */
-body {
-    background: linear-gradient(135deg, #12121a, #1a1a25);
-    background-size: 200% 200%;
-    animation: bgPulse 30s ease infinite;
-    margin: 0;
-    font-family: 'Courier New', monospace;
-    color: #fff;
+@keyframes blink {
+    50% { opacity: 0; }
 }
 
-/* Mobile breakpoint */
+/* ─── Mobile ─── */
 @media screen and (max-width: 768px) {
-    .projects-shell,
-    .project-row {
-        display: block; /* stack instead of grid */
-        gap: 1.5rem;
-    }
-
-    .terminal-text {
-        font-size: 0.9rem;
-        line-height: 1.7;
-    }
-
-    .project-image {
-        width: 100%;
-        aspect-ratio: 16/9; /* maintains height */
-        margin-top: 1rem;
-        padding: 0.5rem;
-    }
-
-    .project-image video,
-    .project-image img {
-        border-radius: 12px;
-        object-fit: cover;
-    }
-
-    .terminal-line.cmd {
-        font-size: 0.95rem;
-    }
-
-    .project-title {
-        font-size: 1.05rem;
-    }
-}
-
-/* Base project row layout */
-.project-row {
-    display: grid;
-    grid-template-columns: 1.4fr 1fr;
-    gap: 3rem;
-    align-items: center;
-    margin-bottom: 4rem;
-}
-
-/* Mobile adjustments */
-@media screen and (max-width: 768px) {
-    .projects-shell {
+    .terminal-page {
         padding: 2rem 1rem;
     }
 
     .project-row {
-        display: block; /* stack vertically */
-        gap: 1.5rem;
+        display: block;
         margin-bottom: 3rem;
     }
 
@@ -191,83 +155,19 @@ body {
     }
 
     .project-image {
-        width: 100%;
-        aspect-ratio: 16/9; /* maintain proper height */
-        margin-top: 1rem;
-        padding: 0.5rem;
-    }
-
-    .project-image img,
-    .project-image video {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        border-radius: 12px;
-    }
-
-    .terminal-line.cmd {
-        font-size: 0.95rem;
-    }
-
-    /* Optional: reduce cursor size on mobile */
-    .cursor {
-        width: 6px;
-        height: 1em;
-    }
-}
-
-/* Base layout */
-.project-row {
-    display: grid;
-    grid-template-columns: 1.4fr 1fr;
-    gap: 3rem;
-    align-items: center;
-    margin-bottom: 4rem;
-}
-
-/* Mobile adjustments */
-@media screen and (max-width: 768px) {
-    .projects-shell,
-    .project-row {
-        display: block; /* stack text and image vertically */
-        gap: 1.5rem;
-    }
-
-    .terminal-page {
-        padding: 2rem 1rem;
-    }
-
-    .terminal-text {
-        font-size: 0.9rem;
-        line-height: 1.7;
-    }
-
-    .project-title {
-        font-size: 1.05rem;
-        margin-bottom: 0.4rem;
-    }
-
-    .project-image {
-        width: 100%;
-        aspect-ratio: 16 / 9; /* maintain proper height */
         margin-top: 1rem;
         padding: 0.5rem;
     }
 
     .project-image img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        border-radius: 12px;
+        border-radius: 10px;
     }
 
     .terminal-line.cmd {
         font-size: 0.95rem;
     }
 
-    /* Optional: reduce cursor size on mobile */
     .cursor {
         width: 6px;
-        height: 1em;
     }
 }
