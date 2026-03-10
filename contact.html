@@ -494,17 +494,17 @@ footer {
   <div class="left-chip">Contact</div>
   <h1>Let's work<br>together.</h1>
   <p class="contact-intro">
-    Open to collaborations, freelance work, security discussions,
-    or just a conversation. I read every message and reply to all of them.
+    Open to internships, collaborations, freelance projects, security discussions,
+    or just a good conversation. I read every message and reply to all of them.
   </p>
 
   <div class="methods">
-    <a class="method-card" href="mailto:chidhungwanaroy4@gmail.com">
+    <a class="method-card" href="/cdn-cgi/l/email-protection#b8dbd0d1dcd0cdd6dfcfd9d6d9cad7c18cf8dfd5d9d1d496dbd7d5">
       <div class="method-left">
         <div class="method-icon">✉️</div>
         <div class="method-info">
           <div class="method-name">Email</div>
-          <div class="method-value">chidhungwanaroy4@gmail.com</div>
+          <div class="method-value"><span class="__cf_email__" data-cfemail="a2c1cacbc6cad7ccc5d5c3ccc3d0cddb96e2c5cfc3cbce8cc1cdcf">[email&#160;protected]</span></div>
         </div>
       </div>
       <span class="method-arrow">→</span>
@@ -535,7 +535,7 @@ footer {
     </a>
   </div>
 
-  <div class="left-footer">Based in Harare, Zimbabwe &nbsp;·&nbsp; Open to remote work</div>
+  <div class="left-footer">CS Student · Mutare, Zimbabwe &nbsp;·&nbsp; Open to remote work</div>
 </div>
 
 <div class="contact-right">
@@ -581,54 +581,46 @@ footer {
     <span class="footer-copy">© 2025 Roy Chidhungwana</span>
   </footer>
 
-  <script>
-    // Theme
-    const toggle = document.getElementById('themeToggle');
-    const html   = document.documentElement;
-    html.setAttribute('data-theme', localStorage.getItem('theme') || 'dark');
-    toggle.addEventListener('click', () => {
-      const next = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
-      html.setAttribute('data-theme', next);
-      localStorage.setItem('theme', next);
-    });
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 
-    // Form
-    const form = document.getElementById('contactForm');
-    const btn  = document.getElementById('submitBtn');
-    const msg  = document.getElementById('statusMsg');
+```
+// Theme
+const toggle = document.getElementById('themeToggle');
+const html   = document.documentElement;
+html.setAttribute('data-theme', localStorage.getItem('theme') || 'dark');
+toggle.addEventListener('click', () => {
+  const next = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+  html.setAttribute('data-theme', next);
+  localStorage.setItem('theme', next);
+});
 
-    form.addEventListener('submit', async e => {
-      e.preventDefault();
-      const name    = document.getElementById('name').value.trim();
-      const email   = document.getElementById('email').value.trim();
-      const message = document.getElementById('message').value.trim();
+// Form
+const form = document.getElementById('contactForm');
+const btn  = document.getElementById('submitBtn');
+const msg  = document.getElementById('statusMsg');
 
-      if (!name || !email || !message) {
-        msg.textContent = 'Name, email and message are required.';
-        msg.className = 'status-msg visible err';
-        return;
-      }
+form.addEventListener('submit', async e => {
+  e.preventDefault();
+  const name    = document.getElementById('name').value.trim();
+  const email   = document.getElementById('email').value.trim();
+  const message = document.getElementById('message').value.trim();
 
-      btn.disabled = true;
-      btn.textContent = 'Sending…';
-      msg.className = 'status-msg';
+  if (!name || !email || !message) {
+    msg.textContent = 'Name, email and message are required.';
+    msg.className = 'status-msg visible err';
+    return;
+  }
 
-      try {
-        // Replace with your endpoint:
-        // await fetch('/api/contact', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({ name, email, message }) });
-        await new Promise(r => setTimeout(r, 900));
-        msg.textContent = "Sent ✓ I'll be in touch soon.";
-        msg.className = 'status-msg visible ok';
-        form.reset();
-      } catch {
-        msg.textContent = 'Failed to send. Try emailing me directly.';
-        msg.className = 'status-msg visible err';
-      } finally {
-        btn.disabled = false;
-        btn.textContent = 'Send message →';
-      }
-    });
-  </script>
+  btn.disabled = true;
+  btn.textContent = 'Sending…';
+  msg.className = 'status-msg';
 
-</body>
-</html>
+  try {
+    // Replace with your endpoint:
+    // await fetch('/api/contact', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({ name, email, message }) });
+    await new Promise(r => setTimeout(r, 900));
+    msg.textContent = "Sent ✓ I'll be in touch soon.";
+    msg.className = 'status-msg visible ok';
+    form.reset();
+  } catch {
+```
