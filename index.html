@@ -1,8 +1,16 @@
 <!DOCTYPE html>
 
 <html lang="en" data-theme="dark">
+<script>
+  // Runs before any rendering — prevents flash of wrong theme
+  (function() {
+    var t = localStorage.getItem('theme') || 'dark';
+    document.documentElement.setAttribute('data-theme', t);
+  })();
+</script>
 <head>
   <meta charset="UTF-8">
+  <meta name="color-scheme" content="dark light">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Roy Chidhungwana — Security Researcher & Developer</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -553,7 +561,7 @@ footer {
 
   <div class="hero-stats">
     <div class="hero-stat">
-      <div class="hero-stat-n">2<sup>+</sup></div>
+      <div class="hero-stat-n">0<sup>+</sup></div>
       <div class="hero-stat-l">Projects shipped</div>
     </div>
     <div class="hero-stat" style="padding-left:40px;border-left:1px solid var(--border);">
